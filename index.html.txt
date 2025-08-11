@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAKE IT POP Awards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+        }
+
+        /* Page Sections */
+        .page {
+            display: none;
+            min-height: calc(100vh - 100px);
+            padding: 40px 0;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .page-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        /* Watch Page */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .video-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .video-meta {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        /* Articles Page */
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .article-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+        }
+
+        .article-card:hover {
+            transform: scale(1.02);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            position: relative;
+        }
+
+        .article-content {
+            padding: 25px;
+        }
+
+        .article-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .article-excerpt {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        /* Showcase Page */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .showcase-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .showcase-item:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .showcase-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef);
+            position: relative;
+        }
+
+        .showcase-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .showcase-item:hover .showcase-overlay {
+            opacity: 1;
+        }
+
+        .showcase-info {
+            padding: 20px;
+        }
+
+        .category-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        /* Artists Page */
+        .search-bar {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: white;
+            font-size: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .artists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .artist-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .artist-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .artist-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .artist-name {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .artist-specialty {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+        }
+
+        .artist-quote {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+            margin-bottom: 20px;
+            border-left: 3px solid rgba(255, 255, 255, 0.3);
+            padding-left: 15px;
+        }
+
+        .view-interview-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .view-interview-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 20px;
+                font-size: 14px;
+            }
+            
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .video-grid,
+            .article-grid,
+            .showcase-grid,
+            .artists-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">MAKE IT POP</div>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link active" data-page="watch">Watch</a></li>
+                <li><a href="#" class="nav-link" data-page="articles">Articles</a></li>
+                <li><a href="#" class="nav-link" data-page="showcase">Showcase</a></li>
+                <li><a href="#" class="nav-link" data-page="artists">Artists</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Watch Page -->
+        <section id="watch" class="page active">
+            <h1 class="page-title">Featured Videos</h1>
+            
+            <div class="video-grid">
+                <article class="video-card">
+                    <div class="video-placeholder">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Winner Interview: Digital Art Category</h3>
+                        <p class="video-meta">15 min • Creative Process</p>
+                    </div>
+                </article>
+
+                <article class="video-card">
+                    <div class="video-placeholder">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Behind the Scenes: Graphic Design Winner</h3>
+                        <p class="video-meta">22 min • Studio Visit</p>
+                    </div>
+                </article>
+
+                <article class="video-card">
+                    <div class="video-placeholder">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Photography Excellence Showcase</h3>
+                        <p class="video-meta">18 min • Portfolio Review</p>
+                    </div>
+                </article>
+
+                <article class="video-card">
+                    <div class="video-placeholder">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Illustration Mastery: Winner's Journey</h3>
+                        <p class="video-meta">25 min • Career Insights</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Articles Page -->
+        <section id="articles" class="page">
+            <h1 class="page-title">Featured Stories</h1>
+            
+            <div class="article-grid">
+                <article class="article-card">
+                    <div class="article-image"></div>
+                    <div class="article-content">
+                        <h3 class="article-title">The Evolution of South African Digital Art</h3>
+                        <p class="article-excerpt">Exploring how local artists are pushing boundaries in digital creativity and gaining international recognition through innovative techniques...</p>
+                        <div class="article-meta">
+                            <span>Design Insights</span>
+                            <span>8 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-image"></div>
+                    <div class="article-content">
+                        <h3 class="article-title">Photography Trends Shaping Creative Industries</h3>
+                        <p class="article-excerpt">From street photography to commercial work, discover the visual storytelling approaches that are defining contemporary South African photography...</p>
+                        <div class="article-meta">
+                            <span>Photography</span>
+                            <span>12 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-image"></div>
+                    <div class="article-content">
+                        <h3 class="article-title">Graphic Design: Balancing Tradition and Innovation</h3>
+                        <p class="article-excerpt">How award-winning designers are incorporating cultural heritage into modern brand identity and visual communication strategies...</p>
+                        <div class="article-meta">
+                            <span>Branding</span>
+                            <span>10 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-image"></div>
+                    <div class="article-content">
+                        <h3 class="article-title">The Rise of Motion Graphics in Marketing</h3>
+                        <p class="article-excerpt">Animated storytelling is transforming how brands connect with audiences. Learn from the techniques of our motion graphics winners...</p>
+                        <div class="article-meta">
+                            <span>Animation</span>
+                            <span>15 min read</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Showcase Page -->
+        <section id="showcase" class="page">
+            <h1 class="page-title">Award Winners Gallery</h1>
+            
+            <div class="showcase-grid">
+                <div class="showcase-item">
+                    <div class="showcase-image">
+                        <div class="showcase-overlay">
+                            <button class="view-interview-btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="showcase-info">
+                        <span class="category-tag">Digital Art</span>
+                        <h3 class="video-title">Abstract Expressions Series</h3>
+                        <p class="video-meta">Gold Award Winner 2024</p>
+                    </div>
+                </div>
+
+                <div class="showcase-item">
+                    <div class="showcase-image">
+                        <div class="showcase-overlay">
+                            <button class="view-interview-btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="showcase-info">
+                        <span class="category-tag">Photography</span>
+                        <h3 class="video-title">Urban Landscapes Collection</h3>
+                        <p class="video-meta">Silver Award Winner 2024</p>
+                    </div>
+                </div>
+
+                <div class="showcase-item">
+                    <div class="showcase-image">
+                        <div class="showcase-overlay">
+                            <button class="view-interview-btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="showcase-info">
+                        <span class="category-tag">Graphic Design</span>
+                        <h3 class="video-title">Brand Identity Revolution</h3>
+                        <p class="video-meta">Bronze Award Winner 2024</p>
+                    </div>
+                </div>
+
+                <div class="showcase-item">
+                    <div class="showcase-image">
+                        <div class="showcase-overlay">
+                            <button class="view-interview-btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="showcase-info">
+                        <span class="category-tag">Illustration</span>
+                        <h3 class="video-title">Cultural Heritage Reimagined</h3>
+                        <p class="video-meta">Gold Award Winner 2024</p>
+                    </div>
+                </div>
+
+                <div class="showcase-item">
+                    <div class="showcase-image">
+                        <div class="showcase-overlay">
+                            <button class="view-interview-btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="showcase-info">
+                        <span class="category-tag">Motion Graphics</span>
+                        <h3 class="video-title">Animated Storytelling Masterpiece</h3>
+                        <p class="video-meta">Silver Award Winner 2024</p>
+                    </div>
+                </div>
+
+                <div class="showcase-item">
+                    <div class="showcase-image">
+                        <div class="showcase-overlay">
+                            <button class="view-interview-btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="showcase-info">
+                        <span class="category-tag">Web Design</span>
+                        <h3 class="video-title">Interactive Experience Design</h3>
+                        <p class="video-meta">Bronze Award Winner 2024</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Artists Page -->
+        <section id="artists" class="page">
+            <h1 class="page-title">Featured Artists</h1>
+            
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Search artists by name or category...">
+            </div>
+            
+            <div class="artists-grid">
+                <div class="artist-card">
+                    <div class="artist-avatar"></div>
+                    <h3 class="artist-name">Thabo Mokwena</h3>
+                    <p class="artist-specialty">Digital Artist & Illustrator</p>
+                    <blockquote class="artist-quote">"Art should challenge perspectives and spark conversations about our shared humanity."</blockquote>
+                    <button class="view-interview-btn">View Interview</button>
+                </div>
+
+                <div class="artist-card">
+                    <div class="artist-avatar"></div>
+                    <h3 class="artist-name">Naledi Sithole</h3>
+                    <p class="artist-specialty">Graphic Designer</p>
+                    <blockquote class="artist-quote">"Design is about solving problems while creating beauty that resonates with people's souls."</blockquote>
+                    <button class="view-interview-btn">View Interview</button>
+                </div>
+
+                <div class="artist-card">
+                    <div class="artist-avatar"></div>
+                    <h3 class="artist-name">Kobus van der Merwe</h3>
+                    <p class="artist-specialty">Photographer</p>
+                    <blockquote class="artist-quote">"Every photograph captures a moment that will never exist again. That's the magic."</blockquote>
+                    <button class="view-interview-btn">View Interview</button>
+                </div>
+
+                <div class="artist-card">
+                    <div class="artist-avatar"></div>
+                    <h3 class="artist-name">Amara Okafor</h3>
+                    <p class="artist-specialty">Motion Graphics Artist</p>
+                    <blockquote class="artist-quote">"Animation brings stories to life in ways that static images simply cannot achieve."</blockquote>
+                    <button class="view-interview-btn">View Interview</button>
+                </div>
+
+                <div class="artist-card">
+                    <div class="artist-avatar"></div>
+                    <h3 class="artist-name">Sipho Mthembu</h3>
+                    <p class="artist-specialty">Web Designer</p>
+                    <blockquote class="artist-quote">"Good design is invisible – it works so well that users don't even think about it."</blockquote>
+                    <button class="view-interview-btn">View Interview</button>
+                </div>
+
+                <div class="artist-card">
+                    <div class="artist-avatar"></div>
+                    <h3 class="artist-name">Keabetswe Motaung</h3>
+                    <p class="artist-specialty">Brand Identity Designer</p>
+                    <blockquote class="artist-quote">"A brand is not what you say it is, it's what your audience believes it to be."</blockquote>
+                    <button class="view-interview-btn">View Interview</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Navigation functionality
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Remove active class from all links and pages
+                navLinks.forEach(nl => nl.classList.remove('active'));
+                pages.forEach(page => page.classList.remove('active'));
+                
+                // Add active class to clicked link
+                link.classList.add('active');
+                
+                // Show corresponding page
+                const targetPage = document.getElementById(link.dataset.page);
+                targetPage.classList.add('active');
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector('.search-input');
+        const artistCards = document.querySelectorAll('.artist-card');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                
+                artistCards.forEach(card => {
+                    const artistName = card.querySelector('.artist-name').textContent.toLowerCase();
+                    const artistSpecialty = card.querySelector('.artist-specialty').textContent.toLowerCase();
+                    
+                    if (artistName.includes(searchTerm) || artistSpecialty.includes(searchTerm)) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeIn 0.5s ease';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Add click handlers for interactive elements
+        document.querySelectorAll('.play-button').forEach(button => {
+            button.addEventListener('click', () => {
+                button.innerHTML = '⏸';
+                setTimeout(() => button.innerHTML = '▶', 2000);
+            });
+        });
+
+        document.querySelectorAll('.view-interview-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                button.style.transform = 'scale(0.95)';
+                setTimeout(() => button.style.transform = 'scale(1.05)', 100);
+                setTimeout(() => button.style.transform = 'scale(1)', 200);
+            });
+        });
+
+        // Add CSS for fade in animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
