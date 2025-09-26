@@ -1,5 +1,4 @@
-
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -42,6 +41,12 @@
             align-items: center;
         }
 
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
         .logo {
             font-size: 28px;
             font-weight: 800;
@@ -50,6 +55,66 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: gradientShift 3s ease infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.5)) 
+                    drop-shadow(0 0 20px rgba(254, 202, 87, 0.3)) 
+                    drop-shadow(0 0 30px rgba(72, 219, 251, 0.2));
+            text-shadow: 0 0 15px rgba(255, 107, 107, 0.4),
+                         0 0 25px rgba(254, 202, 87, 0.3),
+                         0 0 35px rgba(72, 219, 251, 0.2);
+        }
+
+        .logo-svg {
+            width: 200px;
+            height: 50px;
+            filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.5)) 
+                    drop-shadow(0 0 20px rgba(254, 202, 87, 0.3)) 
+                    drop-shadow(0 0 30px rgba(72, 219, 251, 0.2))
+                    drop-shadow(0 0 40px rgba(255, 159, 243, 0.2))
+                    drop-shadow(0 0 50px rgba(255, 107, 107, 0.1));
+            transition: all 0.3s ease;
+            animation: logoGlow 4s ease-in-out infinite alternate;
+        }
+
+        .logo-svg:hover {
+            filter: drop-shadow(0 0 15px rgba(255, 107, 107, 0.7)) 
+                    drop-shadow(0 0 25px rgba(254, 202, 87, 0.5)) 
+                    drop-shadow(0 0 35px rgba(72, 219, 251, 0.4))
+                    drop-shadow(0 0 45px rgba(255, 159, 243, 0.3))
+                    drop-shadow(0 0 60px rgba(255, 107, 107, 0.2));
+            transform: scale(1.05);
+        }
+
+        @keyframes logoGlow {
+            0% {
+                filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.5)) 
+                        drop-shadow(0 0 20px rgba(254, 202, 87, 0.3)) 
+                        drop-shadow(0 0 30px rgba(72, 219, 251, 0.2))
+                        drop-shadow(0 0 40px rgba(255, 159, 243, 0.2));
+            }
+            25% {
+                filter: drop-shadow(0 0 12px rgba(254, 202, 87, 0.6)) 
+                        drop-shadow(0 0 22px rgba(72, 219, 251, 0.4)) 
+                        drop-shadow(0 0 32px rgba(255, 159, 243, 0.3))
+                        drop-shadow(0 0 42px rgba(255, 107, 107, 0.2));
+            }
+            50% {
+                filter: drop-shadow(0 0 14px rgba(72, 219, 251, 0.7)) 
+                        drop-shadow(0 0 24px rgba(255, 159, 243, 0.5)) 
+                        drop-shadow(0 0 34px rgba(255, 107, 107, 0.3))
+                        drop-shadow(0 0 44px rgba(254, 202, 87, 0.2));
+            }
+            75% {
+                filter: drop-shadow(0 0 16px rgba(255, 159, 243, 0.6)) 
+                        drop-shadow(0 0 26px rgba(255, 107, 107, 0.4)) 
+                        drop-shadow(0 0 36px rgba(254, 202, 87, 0.3))
+                        drop-shadow(0 0 46px rgba(72, 219, 251, 0.2));
+            }
+            100% {
+                filter: drop-shadow(0 0 18px rgba(255, 107, 107, 0.6)) 
+                        drop-shadow(0 0 28px rgba(254, 202, 87, 0.4)) 
+                        drop-shadow(0 0 38px rgba(72, 219, 251, 0.3))
+                        drop-shadow(0 0 48px rgba(255, 159, 243, 0.2));
+            }
         }
 
         @keyframes gradientShift {
@@ -401,13 +466,25 @@
             .artists-grid {
                 grid-template-columns: 1fr;
             }
+
+            .logo-container {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .logo-svg {
+                width: 150px;
+                height: 40px;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <nav class="container">
-            <div class="logo">MAKE IT POP</div>
+            <div class="logo-container">
+                <img src="MAKE IT POP LOGO 1.svg" alt="Make It Pop Logo" class="logo-svg">
             <ul class="nav-links">
                 <li><a href="#" class="nav-link active" data-page="watch">Watch</a></li>
                 <li><a href="#" class="nav-link" data-page="articles">Articles</a></li>
