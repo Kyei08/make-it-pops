@@ -26,7 +26,7 @@
 
         /* Header */
         header {
-            padding: 25px 0;
+            padding: 20px 0;
             backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.9);
             position: sticky;
@@ -63,8 +63,8 @@
         }
 
         .logo-svg {
-            width: 297px;
-            height: 105px;
+            width: 270px;
+            height: 95px;
             transition: all 0.4s ease;
         }
 
@@ -430,25 +430,79 @@
             nav {
                 flex-wrap: nowrap;
             }
-        }
 
-        @media (max-width: 480px) {
-            .nav-links {
-                gap: 10px;
-                font-size: 12px;
-            }
-
-            .logo-svg {
-                width: 100px;
-                height: 30px;
+            header {
+                padding: 15px 0;
             }
 
             .container {
                 padding: 0 15px;
             }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                gap: 12px;
+                font-size: 13px;
+            }
+
+            .logo-svg {
+                width: 180px;
+                height: 63px;
+            }
+
+            nav {
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                gap: 8px;
+                font-size: 11px;
+            }
+
+            .logo-svg {
+                width: 160px;
+                height: 56px;
+            }
+
+            .container {
+                padding: 0 12px;
+            }
 
             header {
-                padding: 15px 0;
+                padding: 12px 0;
+            }
+
+            nav {
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .logo-container {
+                flex-shrink: 0;
+            }
+
+            .nav-links {
+                flex-shrink: 1;
+                min-width: 0;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .nav-links {
+                gap: 6px;
+                font-size: 10px;
+            }
+
+            .logo-svg {
+                width: 140px;
+                height: 49px;
+            }
+
+            .nav-links a {
+                padding: 5px;
             }
         }
     </style>
@@ -457,7 +511,7 @@
     <header>
         <nav class="container">
             <div class="logo-container">
-                <img src="MAKE IT POP LOGO 1.svg" alt="" class="logo-svg">
+                <img src="MAKE IT POP LOGO 1.svg" alt="Make It Pop Logo" class="logo-svg">
             </div>
             <ul class="nav-links">
                 <li><a href="#" class="nav-link active" data-page="watch">Watch</a></li>
@@ -788,4 +842,3 @@
     </script>
 </body>
 </html>
-
