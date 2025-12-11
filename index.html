@@ -464,7 +464,261 @@
             margin-bottom: 20px;
         }
 
-        /* Responsive Modal */
+        /* Artist Modal Styles */
+        .artist-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .artist-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .artist-modal-content {
+            background: white;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 0;
+            position: relative;
+            animation: slideUp 0.4s ease;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .artist-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .artist-modal-close:hover {
+            background: rgba(0, 0, 0, 1);
+            transform: rotate(90deg);
+        }
+
+        .artist-modal-navigation {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .artist-modal-navigation:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .artist-modal-prev {
+            left: 10px;
+        }
+
+        .artist-modal-next {
+            right: 10px;
+        }
+
+        /* Vertical Layout for Artist Modal */
+        .artist-modal-header {
+            background: #1a1a2e;
+            padding: 60px 60px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .artist-modal-image-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .artist-modal-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .artist-modal-name {
+            font-size: 42px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .artist-modal-specialty {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .artist-modal-body {
+            padding: 60px;
+        }
+
+        .artist-modal-section {
+            margin-bottom: 50px;
+        }
+
+        .artist-modal-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .artist-modal-section-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .artist-modal-quote-block {
+            background: #f8f9fa;
+            padding: 30px;
+            border-left: 4px solid #667eea;
+            margin-bottom: 30px;
+        }
+
+        .artist-modal-quote-text {
+            font-size: 20px;
+            font-style: italic;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .artist-modal-paragraph {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .artist-modal-highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: 8px;
+        }
+
+        .artist-modal-highlight h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .artist-modal-highlight p {
+            font-size: 16px;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        /* Responsive Artist Modal */
+        @media (max-width: 768px) {
+            .artist-modal-header {
+                padding: 40px 30px 30px;
+            }
+
+            .artist-modal-body {
+                padding: 40px 30px;
+            }
+
+            .artist-modal-name {
+                font-size: 32px;
+            }
+
+            .artist-modal-image-container {
+                width: 150px;
+                height: 150px;
+            }
+
+            .artist-modal-navigation {
+                top: auto;
+                bottom: 20px;
+                transform: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .artist-modal-header {
+                padding: 30px 20px 20px;
+            }
+
+            .artist-modal-body {
+                padding: 30px 20px;
+            }
+
+            .artist-modal-name {
+                font-size: 26px;
+            }
+
+            .artist-modal-specialty {
+                font-size: 13px;
+            }
+
+            .artist-modal-image-container {
+                width: 120px;
+                height: 120px;
+            }
+
+            .artist-modal-section-title {
+                font-size: 16px;
+            }
+
+            .artist-modal-quote-text {
+                font-size: 18px;
+            }
+
+            .artist-modal-close {
+                top: 10px;
+                right: 10px;
+                width: 35px;
+                height: 35px;
+            }
+        }
         @media (max-width: 968px) {
             .modal-content {
                 flex-direction: column;
@@ -616,11 +870,32 @@
             text-align: center;
             transition: all 0.3s ease;
             border: 1px solid rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .artist-card::after {
+            content: '→';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+            color: #667eea;
         }
 
         .artist-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.08);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .artist-card:hover::after {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         .artist-avatar {
@@ -630,6 +905,11 @@
             background: linear-gradient(135deg, #667eea, #764ba2);
             margin: 0 auto 20px;
             position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .artist-card:hover .artist-avatar {
+            transform: scale(1.1);
         }
 
         .artist-name {
@@ -660,11 +940,36 @@
             color: white;
             font-weight: 500;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .view-interview-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+
+        .view-interview-btn:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .view-interview-btn:hover {
             transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .view-interview-btn:active {
+            transform: scale(0.98);
         }
 
         /* Responsive */
@@ -982,7 +1287,7 @@
             </div>
             
             <div class="artists-grid">
-                <div class="artist-card">
+                <div class="artist-card" data-artist-modal="artist-modal1">
                     <div class="artist-avatar"></div>
                     <h3 class="artist-name">Thabo Mokwena</h3>
                     <p class="artist-specialty">Digital Artist & Illustrator</p>
@@ -990,7 +1295,7 @@
                     <button class="view-interview-btn">View Interview</button>
                 </div>
 
-                <div class="artist-card">
+                <div class="artist-card" data-artist-modal="artist-modal2">
                     <div class="artist-avatar"></div>
                     <h3 class="artist-name">Naledi Sithole</h3>
                     <p class="artist-specialty">Graphic Designer</p>
@@ -998,7 +1303,7 @@
                     <button class="view-interview-btn">View Interview</button>
                 </div>
 
-                <div class="artist-card">
+                <div class="artist-card" data-artist-modal="artist-modal3">
                     <div class="artist-avatar"></div>
                     <h3 class="artist-name">Kobus van der Merwe</h3>
                     <p class="artist-specialty">Photographer</p>
@@ -1006,7 +1311,7 @@
                     <button class="view-interview-btn">View Interview</button>
                 </div>
 
-                <div class="artist-card">
+                <div class="artist-card" data-artist-modal="artist-modal4">
                     <div class="artist-avatar"></div>
                     <h3 class="artist-name">Amara Okafor</h3>
                     <p class="artist-specialty">Motion Graphics Artist</p>
@@ -1014,7 +1319,7 @@
                     <button class="view-interview-btn">View Interview</button>
                 </div>
 
-                <div class="artist-card">
+                <div class="artist-card" data-artist-modal="artist-modal5">
                     <div class="artist-avatar"></div>
                     <h3 class="artist-name">Sipho Mthembu</h3>
                     <p class="artist-specialty">Web Designer</p>
@@ -1022,7 +1327,7 @@
                     <button class="view-interview-btn">View Interview</button>
                 </div>
 
-                <div class="artist-card">
+                <div class="artist-card" data-artist-modal="artist-modal6">
                     <div class="artist-avatar"></div>
                     <h3 class="artist-name">Keabetswe Motaung</h3>
                     <p class="artist-specialty">Brand Identity Designer</p>
@@ -1232,6 +1537,295 @@
         </div>
     </div>
 
+    <!-- Artist Modal Windows -->
+    <div id="artist-modal1" class="artist-modal">
+        <div class="artist-modal-content">
+            <button class="artist-modal-close">&times;</button>
+            <button class="artist-modal-navigation artist-modal-prev">&#8249;</button>
+            <button class="artist-modal-navigation artist-modal-next">&#8250;</button>
+            
+            <div class="artist-modal-header">
+                <div class="artist-modal-image-container">
+                    <img src="https://via.placeholder.com/200/667eea/ffffff?text=TM" alt="Thabo Mokwena" class="artist-modal-image">
+                </div>
+                <h2 class="artist-modal-name">Thabo Mokwena</h2>
+                <p class="artist-modal-specialty">Digital Artist & Illustrator</p>
+            </div>
+            
+            <div class="artist-modal-body">
+                <div class="artist-modal-section">
+                    <div class="artist-modal-quote-block">
+                        <p class="artist-modal-quote-text">"Art should challenge perspectives and spark conversations about our shared humanity."</p>
+                    </div>
+                </div>
+
+                <div class="artist-modal-section">
+                    <h3 class="artist-modal-section-title">About the Artist</h3>
+                    <p class="artist-modal-paragraph">Thabo Mokwena is a visionary digital artist whose work transcends traditional boundaries between technology and human expression. With over a decade of experience in the creative industry, he has established himself as one of South Africa's most innovative illustrators.</p>
+                    
+                    <p class="artist-modal-paragraph">His unique approach combines classical illustration techniques with cutting-edge digital tools, resulting in artwork that feels both timeless and thoroughly modern. Each piece tells a story, inviting viewers to explore layers of meaning and cultural significance.</p>
+                </div>
+
+                <div class="artist-modal-highlight">
+                    <h3>Career Highlights</h3>
+                    <p>Featured in international exhibitions across three continents. Work published in leading design magazines including Creative Review and Communication Arts. Collaborated with major brands while maintaining artistic integrity and cultural authenticity.</p>
+                </div>
+
+                <div class="artist-modal-section">
+                    <h3 class="artist-modal-section-title">Creative Philosophy</h3>
+                    <p class="artist-modal-paragraph">For Thabo, art is not merely decoration—it's a powerful tool for social commentary and cultural preservation. His work often addresses themes of identity, belonging, and the African diaspora experience, creating visual narratives that resonate across cultural boundaries.</p>
+                    
+                    <p class="artist-modal-paragraph">Through his practice, he aims to challenge viewers' perspectives and spark meaningful conversations about our shared humanity. Every piece is carefully crafted to engage both intellectually and emotionally.</p>
+                </div>
+
+                <div class="artist-modal-section">
+                    <h3 class="artist-modal-section-title">Looking Forward</h3>
+                    <p class="artist-modal-paragraph">Currently, Thabo is working on a new series exploring the intersection of traditional African art forms and digital innovation. This ambitious project promises to push the boundaries of what's possible in contemporary illustration while honoring cultural heritage.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="artist-modal2" class="artist-modal">
+        <div class="artist-modal-content">
+            <button class="artist-modal-close">&times;</button>
+            <button class="artist-modal-navigation artist-modal-prev">&#8249;</button>
+            <button class="artist-modal-navigation artist-modal-next">&#8250;</button>
+            
+            <div class="artist-modal-header">
+                <div class="artist-modal-image-container">
+                    <img src="https://via.placeholder.com/200/764ba2/ffffff?text=NS" alt="Naledi Sithole" class="artist-modal-image">
+                </div>
+                <h2 class="artist-modal-name">Naledi Sithole</h2>
+                <p class="artist-modal-specialty">Graphic Designer</p>
+            </div>
+            
+            <div class="artist-modal-body">
+                <div class="artist-modal-section">
+                    <div class="artist-modal-quote-block">
+                        <p class="artist-modal-quote-text">"Design is about solving problems while creating beauty that resonates with people's souls."</p>
+                    </div>
+                </div>
+
+                <div class="artist-modal-section">
+                    <h3 class="artist-modal-section-title">About the Artist</h3>
+                    <p class="artist-modal-paragraph">Naledi Sithole approaches graphic design with a rare combination of strategic thinking and artistic sensibility. Her work demonstrates how thoughtful design can solve complex problems while creating emotional connections with audiences.</p>
+                    
+                    <p class="artist-modal-paragraph">Based in Johannesburg, Naledi has built a reputation for creating brand identities that authentically represent diverse South African businesses. Her designs honor cultural context while pushing creative boundaries.</p>
+                </div>
+
+                <div class="artist-modal-highlight">
+                    <h3>Notable Projects</h3>
+                    <p>Brand identity for three major South African corporations. Award-winning packaging design featured in international competitions. Regular speaker at design conferences across Africa.</p>
+                </div>
+
+                <div class="artist-modal-section">
+                    <h3 class="artist-modal-section-title">Design Approach</h3>
+                    <p class="artist-modal-paragraph">Naledi believes that great design must serve a purpose beyond aesthetics. Every project begins with deep research into the client's needs, audience, and cultural context. This foundation ensures that the final design not only looks beautiful but also effectively communicates the intended message.</p>
+                    
+                    <p class="artist-modal-paragraph">Her process involves extensive collaboration with clients, viewing design as a partnership rather than a service. This approach has resulted in long-term relationships and consistently successful outcomes.</p>
+                </div>
+
+                <div class="artist-modal-section">
+                    <h3 class="artist-modal-section-title">Future Vision</h3>
+                    <p class="artist-modal-paragraph">Looking ahead, Naledi is passionate about mentoring the next generation of African designers. She regularly conducts workshops and has plans to establish a design education initiative focused on underserved communities.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="artist-modal3" class="artist-modal">
+        <div class="artist-modal-content">
+            <button class="artist-modal-close">&times;</button>
+            <button class="artist-modal-navigation artist-modal-prev">&#8249;</button>
+            <button class="artist-modal-navigation artist-modal-next">&#8250;</button>
+            
+            <div class="artist-modal-header">
+                <div class="artist-modal-image-container">
+                    <img src="https://via.placeholder.com/200/ff6b6b/ffffff?text=KM" alt="Kobus van der Merwe" class="artist-modal-image">
+                </div>
+                <h2 class="artist-modal-name">Kobus van der Merwe</h2>
+                <p class="artist-modal-specialty">Photographer</p>
+            </div>
+            
+            <div class="artist-modal-body">
+                <div class="artist-modal-section">
+                    <div class="artist-modal-quote-block">
+                        <p class="artist-modal-quote-text">"Every photograph captures a moment that will never exist again. That's the magic."</p>
+                    </div>
+                </div>
+
+                <div class="artist-modal-section">
+                    <h3 class="artist-modal-section-title">About the Artist</h3>
+                    <p class="artist-modal-paragraph">Kobus van der Merwe's photographic journey began in the townships of Cape Town, where he learned to see beauty in unexpected places. His documentary-style approach captures the essence of South African life with honesty and empathy.</p>
+                    
+                    <p class="artist-modal-paragraph">Over the past fifteen years, his work has been featured in prominent publications and galleries worldwide. Despite international recognition, Kobus remains committed to telling local stories and documenting the evolving South African landscape.</p>
+                </div>
+
+                <div class="artist-modal-highlight">
+                    <h3>Recognition & Awards</h3>
+                    <p>Multiple international photography awards including World Press Photo finalist. Work exhibited at major galleries in London, New York, and Johannesburg. Published two critically acclaimed photo books.</p>
+                </div>
+
+                <div class="artist-modal-section">
+                    <h3 class="artist-modal-section-title">Photographic Style</h3>
+                    <p class="artist-modal-paragraph">Kobus's signature style emphasizes natural light and authentic moments. He rarely stages photographs, preferring instead to observe and capture life as it unfolds. This approach requires patience and deep connection with his subjects.</p>
+                    
+                    <p class="artist-modal-paragraph">His images tell stories without words, inviting viewers to find their own meanings and connections. The emotional depth in his work comes from genuine relationships built over time with the communities he photographs.</p>
+                </div>
+
+                <div class="artist-modal-section">
+                    <h3 class="artist-modal-section-title">Current Projects</h3>
+                    <p class="artist-modal-paragraph">Currently working on a long-term documentary project exploring the changing face of South African cities. This ambitious work will culminate in a major exhibition and book scheduled for next year.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="artist-modal4" class="artist-modal">
+        <div class="artist-modal-content">
+            <button class="artist-modal-close">&times;</button>
+            <button class="artist-modal-navigation artist-modal-prev">&#8249;</button>
+            <button class="artist-modal-navigation artist-modal-next">&#8250;</button>
+            
+            <div class="artist-modal-header">
+                <div class="artist-modal-image-container">
+                    <img src="https://via.placeholder.com/200/4ecdc4/ffffff?text=AO" alt="Amara Okafor" class="artist-modal-image">
+                </div>
+                <h2 class="artist-modal-name">Amara Okafor</h2>
+                <p class="artist-modal-specialty">Motion Graphics Artist</p>
+            </div>
+            
+            <div class="artist-modal-body">
+                <div class="artist-modal-section">
+                    <div class="artist-modal-quote-block">
+                        <p class="artist-modal-quote-text">"Animation brings stories to life in ways that static images simply cannot achieve."</p>
+                    </div>
+                </div>
+
+                <div class="artist-modal-section">
+                    <h3 class="artist-modal-section-title">About the Artist</h3>
+                    <p class="artist-modal-paragraph">Amara Okafor has revolutionized motion graphics in Africa, bringing a distinctly African aesthetic to the global animation scene. Her work seamlessly blends traditional storytelling with contemporary digital techniques.</p>
+                    
+                    <p class="artist-modal-paragraph">With a background in both fine arts and computer science, Amara brings a unique perspective to her craft. This interdisciplinary foundation allows her to push technical boundaries while maintaining strong artistic vision.</p>
+                </div>
+
+                <div class="artist-modal-highlight">
+                    <h3>Industry Impact</h3>
+                    <p>Created motion graphics for major international brands and local startups alike. Developed training programs for aspiring animators. Regular contributor to industry publications on the future of African animation.</p>
+                </div>
+
+                <div class="artist-modal-section">
+                    <h3 class="artist-modal-section-title">Creative Process</h3>
+                    <p class="artist-modal-paragraph">Amara's animation process begins with extensive storyboarding and concept development. She believes that strong narrative foundation is essential for compelling motion graphics, regardless of the project's scope or purpose.</p>
+                    
+                    <p class="artist-modal-paragraph">Her attention to timing, pacing, and visual rhythm sets her work apart. Every frame is considered, every transition purposeful. This meticulous approach results in animations that feel organic and engaging from start to finish.</p>
+                </div>
+
+                <div class="artist-modal-section">
+                    <h3 class="artist-modal-section-title">Looking Ahead</h3>
+                    <p class="artist-modal-paragraph">Amara is currently developing an animated series celebrating African folklore, bringing ancient stories to new audiences through modern animation techniques. This passion project represents years of research and cultural consultation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="artist-modal5" class="artist-modal">
+        <div class="artist-modal-content">
+            <button class="artist-modal-close">&times;</button>
+            <button class="artist-modal-navigation artist-modal-prev">&#8249;</button>
+            <button class="artist-modal-navigation artist-modal-next">&#8250;</button>
+            
+            <div class="artist-modal-header">
+                <div class="artist-modal-image-container">
+                    <img src="https://via.placeholder.com/200/feca57/333333?text=SM" alt="Sipho Mthembu" class="artist-modal-image">
+                </div>
+                <h2 class="artist-modal-name">Sipho Mthembu</h2>
+                <p class="artist-modal-specialty">Web Designer</p>
+            </div>
+            
+            <div class="artist-modal-body">
+                <div class="artist-modal-section">
+                    <div class="artist-modal-quote-block">
+                        <p class="artist-modal-quote-text">"Good design is invisible – it works so well that users don't even think about it."</p>
+                    </div>
+                </div>
+
+                <div class="artist-modal-section">
+                    <h3 class="artist-modal-section-title">About the Artist</h3>
+                    <p class="artist-modal-paragraph">Sipho Mthembu is at the forefront of web design innovation in South Africa. His user-centered approach prioritizes accessibility and usability without sacrificing aesthetic appeal. Every project reflects his belief that great design serves people first.</p>
+                    
+                    <p class="artist-modal-paragraph">With expertise spanning UX design, front-end development, and visual design, Sipho brings a holistic understanding to every project. This comprehensive skill set enables him to create seamless digital experiences from concept to deployment.</p>
+                </div>
+
+                <div class="artist-modal-highlight">
+                    <h3>Professional Achievements</h3>
+                    <p>Designed award-winning websites for leading South African organizations. Published thought leadership articles on inclusive web design. Conducts accessibility audits and consulting for major corporations.</p>
+                </div>
+
+                <div class="artist-modal-section">
+                    <h3 class="artist-modal-section-title">Design Philosophy</h3>
+                    <p class="artist-modal-paragraph">Sipho advocates for design that prioritizes user needs above trends or personal preference. His rigorous testing process ensures that websites function beautifully across all devices and for users of all abilities.</p>
+                    
+                    <p class="artist-modal-paragraph">He's passionate about web accessibility, viewing it not as a constraint but as a design challenge that leads to better solutions for everyone. His work demonstrates that inclusive design benefits all users, not just those with disabilities.</p>
+                </div>
+
+                <div class="artist-modal-section">
+                    <h3 class="artist-modal-section-title">Community Involvement</h3>
+                    <p class="artist-modal-paragraph">Beyond client work, Sipho dedicates time to teaching web design fundamentals to students from disadvantaged backgrounds. He believes technology skills can create economic opportunities and is committed to expanding access to design education.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="artist-modal6" class="artist-modal">
+        <div class="artist-modal-content">
+            <button class="artist-modal-close">&times;</button>
+            <button class="artist-modal-navigation artist-modal-prev">&#8249;</button>
+            <button class="artist-modal-navigation artist-modal-next">&#8250;</button>
+            
+            <div class="artist-modal-header">
+                <div class="artist-modal-image-container">
+                    <img src="https://via.placeholder.com/200/48dbfb/ffffff?text=KM" alt="Keabetswe Motaung" class="artist-modal-image">
+                </div>
+                <h2 class="artist-modal-name">Keabetswe Motaung</h2>
+                <p class="artist-modal-specialty">Brand Identity Designer</p>
+            </div>
+            
+            <div class="artist-modal-body">
+                <div class="artist-modal-section">
+                    <div class="artist-modal-quote-block">
+                        <p class="artist-modal-quote-text">"A brand is not what you say it is, it's what your audience believes it to be."</p>
+                    </div>
+                </div>
+
+                <div class="artist-modal-section">
+                    <h3 class="artist-modal-section-title">About the Artist</h3>
+                    <p class="artist-modal-paragraph">Keabetswe Motaung has built her career on understanding the psychology behind brand perception. Her strategic approach to identity design goes far beyond logos, creating comprehensive visual systems that tell coherent brand stories.</p>
+                    
+                    <p class="artist-modal-paragraph">Her portfolio includes work with startups seeking to establish their voice and established companies undergoing rebranding. Each project benefits from her ability to distill complex business objectives into clear visual communication.</p>
+                </div>
+
+                <div class="artist-modal-highlight">
+                    <h3>Industry Recognition</h3>
+                    <p>Brand identities featured in international design annuals. Keynote speaker at branding conferences. Contributed chapters to books on contemporary African design practices.</p>
+                </div>
+
+                <div class="artist-modal-section">
+                    <h3 class="artist-modal-section-title">Branding Methodology</h3>
+                    <p class="artist-modal-paragraph">Keabetswe's process begins with intensive discovery sessions, exploring not just what clients do, but why they do it. This deep understanding of purpose and values informs every design decision, ensuring authentic brand expression.</p>
+                    
+                    <p class="artist-modal-paragraph">She creates flexible brand systems that maintain consistency while allowing for creative expression across applications. Her comprehensive guidelines empower clients to maintain brand integrity long after project completion.</p>
+                </div>
+
+                <div class="artist-modal-section">
+                    <h3 class="artist-modal-section-title">Future Direction</h3>
+                    <p class="artist-modal-paragraph">Currently developing a framework for culturally-conscious branding, helping African businesses honor their heritage while competing in global markets. This work addresses a critical need in the evolving landscape of African commerce.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Navigation functionality
         const navLinks = document.querySelectorAll('.nav-link');
@@ -1332,26 +1926,105 @@
             }
         });
 
-        // Search functionality
-        const searchInput = document.querySelector('.search-input');
+        // Artist Modal functionality
         const artistCards = document.querySelectorAll('.artist-card');
+        const artistModals = document.querySelectorAll('.artist-modal');
+        const artistModalCloses = document.querySelectorAll('.artist-modal-close');
+        const artistModalPrevs = document.querySelectorAll('.artist-modal-prev');
+        const artistModalNexts = document.querySelectorAll('.artist-modal-next');
+
+        let currentArtistModalIndex = 0;
+        const artistModalIds = ['artist-modal1', 'artist-modal2', 'artist-modal3', 'artist-modal4', 'artist-modal5', 'artist-modal6'];
+
+        // Open artist modal when card is clicked (entire card is clickable)
+        artistCards.forEach((card, index) => {
+            card.addEventListener('click', (e) => {
+                const modalId = card.dataset.artistModal;
+                const modal = document.getElementById(modalId);
+                currentArtistModalIndex = artistModalIds.indexOf(modalId);
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close artist modal
+        artistModalCloses.forEach(closeBtn => {
+            closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                artistModals.forEach(modal => modal.classList.remove('active'));
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Close artist modal when clicking outside content
+        artistModals.forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Previous artist modal
+        artistModalPrevs.forEach(prevBtn => {
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentArtistModalIndex = (currentArtistModalIndex - 1 + artistModalIds.length) % artistModalIds.length;
+                artistModals.forEach(modal => modal.classList.remove('active'));
+                document.getElementById(artistModalIds[currentArtistModalIndex]).classList.add('active');
+            });
+        });
+
+        // Next artist modal
+        artistModalNexts.forEach(nextBtn => {
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentArtistModalIndex = (currentArtistModalIndex + 1) % artistModalIds.length;
+                artistModals.forEach(modal => modal.classList.remove('active'));
+                document.getElementById(artistModalIds[currentArtistModalIndex]).classList.add('active');
+            });
+        });
+
+        // Keyboard navigation for artist modals
+        document.addEventListener('keydown', (e) => {
+            const activeArtistModal = document.querySelector('.artist-modal.active');
+            if (!activeArtistModal) return;
+
+            if (e.key === 'Escape') {
+                activeArtistModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            } else if (e.key === 'ArrowLeft') {
+                currentArtistModalIndex = (currentArtistModalIndex - 1 + artistModalIds.length) % artistModalIds.length;
+                artistModals.forEach(modal => modal.classList.remove('active'));
+                document.getElementById(artistModalIds[currentArtistModalIndex]).classList.add('active');
+            } else if (e.key === 'ArrowRight') {
+                currentArtistModalIndex = (currentArtistModalIndex + 1) % artistModalIds.length;
+                artistModals.forEach(modal => modal.classList.remove('active'));
+                document.getElementById(artistModalIds[currentArtistModalIndex]).classList.add('active');
+            }
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector('.search-input'); // Already declared above
+        const allArtistCards = document.querySelectorAll('.artist-card'); // Renamed to avoid redeclaration
 
         if (searchInput) {
-            searchInput.addEventListener('input', (e) => {
-                const searchTerm = e.target.value.toLowerCase();
+            searchInput.addEventListener('input', (e) => { // Existing event listener
+                const searchTerm = e.target.value.toLowerCase(); // Existing search term logic
                 
-                artistCards.forEach(card => {
-                    const artistName = card.querySelector('.artist-name').textContent.toLowerCase();
-                    const artistSpecialty = card.querySelector('.artist-specialty').textContent.toLowerCase();
+                allArtistCards.forEach(card => { // Use the renamed variable
+                    const artistName = card.querySelector('.artist-name').textContent.toLowerCase(); // Existing logic
+                    const artistSpecialty = card.querySelector('.artist-specialty').textContent.toLowerCase(); // Existing logic
                     
-                    if (artistName.includes(searchTerm) || artistSpecialty.includes(searchTerm)) {
-                        card.style.display = 'block';
-                        card.style.animation = 'fadeIn 0.5s ease';
-                    } else {
-                        card.style.display = 'none';
+                    if (artistName.includes(searchTerm) || artistSpecialty.includes(searchTerm)) { // Existing logic
+                        card.style.display = 'block'; // Existing logic
+                        card.style.animation = 'fadeIn 0.5s ease'; // Existing logic
+                    } else { // Existing logic
+                        card.style.display = 'none'; // Existing logic
                     }
-                });
-            });
+                }); // End of forEach
+            }); // End of event listener
         }
 
         // Add click handlers for interactive elements
@@ -1382,3 +2055,4 @@
     </script>
 </body>
 </html>
+
